@@ -1,5 +1,5 @@
 import ProjectCard from "../components/ProjectCard";
-
+import { motion } from "framer-motion";
 const projects = [
   {
     title: "Smart Learn LMS",
@@ -31,7 +31,15 @@ const Projects = () => {
 
       <div className="grid md:grid-cols-3 gap-10">
         {projects.map((project, index) => (
-          <ProjectCard key={index} {...project} />
+          <motion.div
+            className="group relative ..."
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.2 }}
+          >
+            <ProjectCard key={index} {...project} />
+          </motion.div>
         ))}
       </div>
     </section>

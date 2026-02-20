@@ -1,4 +1,6 @@
 import profile from "../assets/whatshero.jpg";
+import cv from "../assets/aabhuCv.pdf";
+// import { motion } from "framer-motion";
 const Hero = () => {
   return (
     <section
@@ -8,9 +10,17 @@ const Hero = () => {
       {/* Background Glow */}
       <div className="absolute w-125 h-125 bg-amber-500/20 rounded-full blur-3xl -z-10 animate-pulse"></div>
 
+      <a
+        href={cv}
+        target="_blank"
+        className="absolute top-0 right-0 text-2xl text-yellow-300 p-2 border-4 border-yellow-400 "
+      >
+        Curriculum Vitae
+      </a>
       {/* Heading */}
+
       <h1 className="text-5xl md:text-7xl font-extrabold bg-linear-to-r from-amber-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
-        Hi, I'm Aabhushan
+        Hi I'm Aabhushan
       </h1>
 
       {/* Subtitle */}
