@@ -13,7 +13,7 @@ const Hero = () => {
       <a
         href={cv}
         target="_blank"
-        className="absolute top-0 right-0 text-2xl text-yellow-300 p-2 border-4 border-yellow-400 "
+        className="flex md:absolute top-0  right-0 text-2xl text-yellow-300 p-2 border-4 border-yellow-400 "
       >
         Curriculum Vitae
       </a>

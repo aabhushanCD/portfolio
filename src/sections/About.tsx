@@ -1,9 +1,11 @@
+
 const About = () => {
   return (
     <section
       id="about"
       data-aos="fade"
       className="py-32 px-8 max-w-6xl mx-auto"
+      style={{ perspective: 1000 }}
     >
       <h2 className="text-4xl font-bold text-amber-400 mb-8">About Me</h2>
 

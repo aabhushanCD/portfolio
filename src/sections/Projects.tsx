@@ -29,7 +29,7 @@ const Projects = () => {
     <section id="projects" className="py-32 px-8 max-w-6xl mx-auto">
       <h2 className="text-4xl font-bold text-amber-400 mb-12">Projects</h2>
 
-      <div className="grid md:grid-cols-3 gap-10">
+      <div className="grid md:grid-cols-3 gap-10 auto-rows-fr">
         {projects.map((project, index) => (
           <motion.div
             className="group relative ..."
