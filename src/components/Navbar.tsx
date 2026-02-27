@@ -268,7 +268,7 @@ const Navbar = () => {
       `}</style>
 
       {/* Mobile overlay menu */}
-      <div className={`mobile-menu ${navOpen ? "open" : ""}`}>
+      <div className={` mobile-menu ${navOpen ? "open" : ""}`}>
         <button className="mobile-close" onClick={() => setNavOpen(false)}>
           <RiCloseLine />
         </button>
@@ -287,7 +287,7 @@ const Navbar = () => {
           ))}
         </nav>
 
-        <div className="mobile-footer">Aabhushan · Portfolio · 2025</div>
+        <div className=" mobile-footer">Aabhushan · Portfolio · 2025</div>
       </div>
 
       {/* Main navbar */}
@@ -297,7 +297,7 @@ const Navbar = () => {
       >
         <div
           style={{ maxWidth: "1100px" }}
-          className="mx-auto flex justify-between items-center px-6 py-4"
+          className=" mx-auto flex justify-between items-center px-6 py-4"
         >
           {/* Logo */}
           <a href="#home" className="nav-logo">

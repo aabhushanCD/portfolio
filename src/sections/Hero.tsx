@@ -119,8 +119,8 @@ const Hero = () => {
         /* CV button */
         .cv-btn {
           position: fixed;
-          top: 24px;
-          right: 28px;
+          top: 32px;
+          right: 70px;
           z-index: 50;
           display: flex;
           align-items: center;
