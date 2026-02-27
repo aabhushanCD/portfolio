@@ -68,6 +68,11 @@ const About = () => {
           pointer-events: none;
         }
 
+        .about-inner {
+          max-width: 1100px;
+          margin: 0 auto;
+        }
+
         .section-label {
           font-family: 'DM Sans', sans-serif;
           font-size: 11px;
@@ -90,7 +95,7 @@ const About = () => {
 
         .about-heading {
           font-family: 'Syne', sans-serif;
-          font-size: clamp(2.8rem, 6vw, 5rem);
+          font-size: clamp(2.2rem, 6vw, 5rem);
           font-weight: 800;
           line-height: 1.0;
           letter-spacing: -0.03em;
@@ -124,6 +129,37 @@ const About = () => {
         .body-text strong {
           color: #e5e7eb;
           font-weight: 500;
+        }
+
+        /* Main two-column grid */
+        .about-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 48px;
+        }
+
+        @media (min-width: 768px) {
+          .about-grid {
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: start;
+          }
+        }
+
+        /* Stats row */
+        .stats-grid {
+          display: grid;
+          grid:1,
+          grid-template-columns: repeat(3, 1fr);
+          gap: 12px;
+          margin-bottom: 36px;
+        }
+
+        @media (max-width: 700px) {
+          .stats-grid {
+            grid-template-columns: 1fr;
+            gap: 10px;
+          }
         }
 
         .stat-card {
@@ -162,15 +198,26 @@ const About = () => {
           position: relative;
         }
 
+        /* On mobile, image column appears after text column (natural DOM order) */
+        /* On desktop, it sits in the second column via grid */
+
         .image-frame {
           position: relative;
           border-radius: 24px;
           overflow: hidden;
           aspect-ratio: 3/4;
-          // max-height: 520px;
+          max-height: 520px;
+          width: 100%;
         }
 
-        .image-frame  img {
+        @media (max-width: 767px) {
+          .image-frame {
+            aspect-ratio: 4/5;
+            max-height: 380px;
+          }
+        }
+
+        .image-frame img {
           width: 100%;
           height: 100%;
           object-fit: cover;
@@ -225,7 +272,6 @@ const About = () => {
           margin-top: 2px;
         }
 
-        /* Decorative corner */
         .corner-decor {
           position: absolute;
           top: -12px;
@@ -271,6 +317,12 @@ const About = () => {
           background: rgba(255,255,255,0.06);
         }
 
+        .tech-pills {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+
         .tech-pill {
           display: inline-block;
           padding: 5px 14px;
@@ -291,7 +343,6 @@ const About = () => {
           transform: translateY(-1px);
         }
 
-        /* Divider */
         .divider {
           width: 100%;
           height: 1px;
@@ -299,7 +350,7 @@ const About = () => {
           margin: 32px 0;
         }
 
-        /* Fade in animations */
+        /* Fade-in animations */
         .fade-up {
           opacity: 0;
           transform: translateY(30px);
@@ -315,17 +366,10 @@ const About = () => {
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
         .delay-4 { transition-delay: 0.4s; }
-        .delay-5 { transition-delay: 0.5s; }
-        .delay-6 { transition-delay: 0.6s; }
-
-        @media (max-width: 768px) {
-          .about-heading { font-size: 2.5rem; }
-          .image-frame { max-height: 380px; aspect-ratio: 4/5; }
-        }
       `}</style>
 
       <section ref={sectionRef} id="about" className="about-section py-28 px-6">
-        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+        <div className="about-inner">
           {/* Header */}
           <div className={`fade-up ${visible ? "visible" : ""}`}>
             <p className="section-label mb-5">About Me</p>
@@ -337,30 +381,19 @@ const About = () => {
           </div>
 
           {/* Main Grid */}
-          <div
-            style={{ display: "grid", gridTemplateColumns: "1fr", gap: "60px" }}
-            className="md:grid-cols-about"
-          >
-            {/* --- LEFT: Text Column --- */}
-            <div
-              style={{ display: "grid", gridTemplateColumns: "1fr", gap: "0" }}
-            >
-              {/* Stat row */}
-              <div
-                className={`fade-up delay-1 ${visible ? "visible" : ""}`}
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(3, 1fr)",
-                  gap: "12px",
-                  marginBottom: "36px",
-                }}
-              >
-                {stats.map((s) => (
-                  <div className="stat-card" key={s.label}>
-                    <div className="stat-value">{s.value}</div>
-                    <div className="stat-label">{s.label}</div>
-                  </div>
-                ))}
+          <div className="about-grid">
+            {/* LEFT: Text Column */}
+            <div>
+              {/* Stats */}
+              <div className={`fade-up delay-1 ${visible ? "visible" : ""}`}>
+                <div className="stats-grid">
+                  {stats.map((s) => (
+                    <div className="stat-card" key={s.label}>
+                      <div className="stat-value">{s.value}</div>
+                      <div className="stat-label">{s.label}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* Bio */}
@@ -397,7 +430,7 @@ const About = () => {
               {/* Tech Stack */}
               <div className={`fade-up delay-3 ${visible ? "visible" : ""}`}>
                 <p className="tech-section-title">Tech Stack</p>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                <div className="tech-pills ">
                   {[...techStack.left, ...techStack.right].map((tech) => (
                     <span className="tech-pill" key={tech}>
                       {tech}
@@ -407,18 +440,16 @@ const About = () => {
               </div>
             </div>
 
-            {/* --- RIGHT: Image Column --- */}
+            {/* RIGHT: Image Column */}
             <div
               className={`image-wrapper fade-up delay-4 ${visible ? "visible" : ""}`}
-              style={{ display: "none" }}
-              id="about-image-col"
             >
               <div className="corner-decor" />
               <div className="corner-decor-bl" />
               <div className="image-border-glow" />
-              <div className="image-frame ">
+              <div className="image-frame">
                 <img src={profile} alt="Aabhushan" />
-                <div className="image-badge ">
+                <div className="image-badge">
                   <div className="image-badge-name">Aabhushan</div>
                   <div className="image-badge-title">Full-Stack Developer</div>
                 </div>
@@ -426,16 +457,6 @@ const About = () => {
             </div>
           </div>
         </div>
-
-        {/* Responsive grid via inline style override for md+ */}
-        <style>{`
-          @media (min-width: 768px) {
-            #about-image-col { display: block !important; }
-            .about-section > div > div[style*="grid-template-columns: 1fr"] {
-              grid-template-columns: 1.1fr 0.9fr !important;
-            }
-          }
-        `}</style>
       </section>
     </>
   );

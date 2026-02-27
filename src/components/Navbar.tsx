@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { CiMenuFries } from "react-icons/ci";
 import { RiCloseLine } from "react-icons/ri";
-
+import cv from "../assets/aabhuCv.pdf";
 const links = ["Home", "About", "Projects", "Contact"];
 
 const Navbar = () => {
@@ -229,6 +229,38 @@ const Navbar = () => {
           font-family: 'DM Sans', sans-serif;
         }
 
+         /* CV button */
+        .cv-btn {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 9px 20px;
+          background: rgba(7,9,13,0.8);
+          border: 1px solid rgba(245,158,11,0.4);
+          border-radius: 100px;
+          color: #fbbf24;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.82rem;
+          font-weight: 500;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          text-decoration: none;
+          backdrop-filter: blur(16px);
+          transition: all 0.3s ease;
+        }
+
+        .cv-btn:hover {
+          background: rgba(245,158,11,0.1);
+          border-color: rgba(245,158,11,0.7);
+          transform: translateY(-2px);
+          box-shadow: 0 8px 30px rgba(245,158,11,0.15);
+        }
+
+        .cv-btn svg {
+          width: 14px;
+          height: 14px;
+        }
+
         /* Hamburger */
         .menu-btn {
           background: rgba(255,255,255,0.04);
@@ -323,16 +355,29 @@ const Navbar = () => {
               <span className="nav-pill-dot" />
               Open to work
             </span>
+            <a href={cv} target="_blank" rel="noreferrer" className="cv-btn   ">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+              </svg>
+              Resume
+            </a>
           </div>
 
           {/* Mobile hamburger */}
-          <button
-            className={`md:hidden menu-btn ${navOpen ? "active" : ""}`}
-            onClick={() => setNavOpen(!navOpen)}
-            aria-label="Toggle menu"
-          >
-            <CiMenuFries />
-          </button>
+          <div className="md:hidden">
+            <button
+              className={`menu-btn ${navOpen ? "active" : ""}`}
+              onClick={() => setNavOpen(!navOpen)}
+              aria-label="Toggle menu"
+            >
+              <CiMenuFries className="" />
+            </button>
+          </div>
         </div>
       </header>
     </>
