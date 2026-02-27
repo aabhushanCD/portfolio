@@ -680,18 +680,20 @@ Error generating stack: `+a.message+`
         /* Stats row */
         .stats-grid {
           display: grid;
-          grid:1,
+          
           grid-template-columns: repeat(3, 1fr);
           gap: 12px;
           margin-bottom: 36px;
         }
 
-        @media (max-width: 700px) {
+        @media (max-width: 1000px) {
           .stats-grid {
             grid-template-columns: 1fr;
             gap: 10px;
+          
           }
         }
+    
 
         .stat-card {
           border: 1px solid rgba(255,255,255,0.06);
