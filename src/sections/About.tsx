@@ -167,10 +167,10 @@ const About = () => {
           border-radius: 24px;
           overflow: hidden;
           aspect-ratio: 3/4;
-          max-height: 520px;
+          // max-height: 520px;
         }
 
-        .image-frame img {
+        .image-frame  img {
           width: 100%;
           height: 100%;
           object-fit: cover;
@@ -416,9 +416,9 @@ const About = () => {
               <div className="corner-decor" />
               <div className="corner-decor-bl" />
               <div className="image-border-glow" />
-              <div className="image-frame">
+              <div className="image-frame ">
                 <img src={profile} alt="Aabhushan" />
-                <div className="image-badge">
+                <div className="image-badge ">
                   <div className="image-badge-name">Aabhushan</div>
                   <div className="image-badge-title">Full-Stack Developer</div>
                 </div>
